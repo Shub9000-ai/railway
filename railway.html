@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI-Powered Train Traffic Control</title>
+  <link rel="stylesheet" href="railway.css" />
+  <link rel="icon" type="image/png" href="train-icon.png" />
+</head>
+<body>
+  <div class="app">
+    <!-- LEFT: controls + trains -->
+    <div>
+      <header>
+        <div class="logo">AI</div>
+        <div>
+          <h1>AI-Powered Train Traffic Control</h1>
+          <div class="subtitle">Prototype dashboard — simulated data</div>
+        </div>
+      </header>
+
+      <div class="card controls">
+        <div class="small-row">
+          <div style="flex:1">
+            <label>Search trains or stations</label>
+            <input class="input" id="search" placeholder="e.g., 12523 / Express / Central" />
+          </div>
+          <button class="btn" id="simulateBtn">SIM</button>
+        </div>
+
+        <div class="small-row">
+          <div style="flex:1">
+            <label>Add new train</label>
+            <input class="input" id="newTrainName" placeholder="Train name or number" />
+          </div>
+          <select id="newPriority">
+            <option value="high">High</option>
+            <option value="med" selected>Medium</option>
+            <option value="low">Low</option>
+          </select>
+          <button class="btn secondary" id="addTrainBtn">Add</button>
+        </div>
+
+        <div class="space-top">
+          <label>Active trains</label>
+          <div class="train-list card" id="trainList"></div>
+        </div>
+      </div>
+
+      <div class="card space-top">
+        <div class="row">
+          <button class="btn ghost" id="exportCsv">Export CSV</button>
+          <button class="btn ghost" id="clearAll">Clear</button>
+        </div>
+
+        <table class="table" id="logTable">
+          <thead><tr><th>Time</th><th>Event</th></tr></thead>
+          <tbody id="logBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CENTER: Map -->
+    <div>
+      <div class="card map">
+        <div class="row" style="justify-content:space-between">
+          <div><strong>Section Map</strong></div>
+          <div class="small muted">Time: <span id="clock">--:--:--</span></div>
+        </div>
+        <canvas id="networkCanvas" width="800" height="360"></canvas>
+      </div>
+    </div>
+
+    <!-- RIGHT: AI -->
+    <div>
+      <div class="card ai-box">
+        <div class="row" style="justify-content:space-between">
+          <div><strong>AI Suggestions</strong></div>
+          <div class="tag">Simulated</div>
+        </div>
+        <div id="aiSuggestions"></div>
+      </div>
+    </div>
+  </div>
+
+   <script src="railway.js"></script>
+</body>
+</html>
